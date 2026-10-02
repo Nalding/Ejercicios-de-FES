@@ -5,6 +5,7 @@ encaminador = "Router"
 ubicació = "Casa"
 nombre_ports = 5
 encaminador_activat = True
+
 print(f"Encaminador: {encaminador}; Ubicació: {ubicació}; Nombre de ports: {nombre_ports}; Encès: {encaminador_activat}")
 
 
@@ -14,9 +15,12 @@ print(f"Encaminador: {encaminador}; Ubicació: {ubicació}; Nombre de ports: {no
 #Després, actualitzar el consum amb un valor nou i tornar a calcular quants GB queden.
 gb_inclosos = 10
 gb_consumits = 4
+
 gb_restants = gb_inclosos - gb_consumits
+
 print(f"GB restants: {gb_restants} GB")
 
 gb_consumits = 8
 gb_restants = gb_inclosos - gb_consumits
+
 print(f"GB restants després de l'actualització: {gb_restants} GB")
