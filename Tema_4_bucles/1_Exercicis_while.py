@@ -84,23 +84,67 @@ while comptador <= n:
     comptador += 1
     
 
-# Exercici 7: Suma fins al zero
-# Demana a l'usuari que introdueixi números enters.
-# Ves sumant els números introduïts fins que l'usuari introdueixi el 0.
-# Al final, imprimeix la suma total. El 0 només serveix per acabar i no s'ha de sumar.
+#Exercici 7: Suma fins al zero.
+#1. Demanar a l'usuari que introdueixi números enters.
+#2. Anar sumant els números introduïts fins que l'usuari introdueixi el 0.
+#3. Al final, imprimeix la suma total. El 0 només serveix per acabar i no s'ha de sumar.
+num = int(input("Introduiex un número enter (0 per acabar): "))
+suma = 0
 
-# Exercici 8: Comptar les xifres d'un número
-# Demana a l'usuari que introdueixi un número enter positiu.
-# Comptabilitza quantes xifres té fent servir un bucle while.
-# Finalment, imprimeix el nombre de xifres.
+while num != 0:
+    suma += num
+    num = int(input("Introduiex un altre enter (0 per acabar): "))
 
-# Exercici 9: Seqüència de Fibonacci
-# Demana a l'usuari quants termes de la seqüència de Fibonacci vol veure.
-# Imprimeix aquest nombre de termes fent servir un bucle while.
+print("La suma de tots el números introduïts és:", suma)
+
+
+#Exercici 8: Comptar les xifres d'un número.
+#1. Demanar a l'usuari que introdueixi un número enter positiu.
+#2. Comptabilitza quantes xifres té fent servir un bucle while.
+#3. Finalment, imprimeix el nombre de xifres.
+num = int(input("Introdueix un nombre enter positiu: "))
+comptador = 0
+
+if num == 0:
+    comptador = 1
+else:
+    while num > 0:
+        num //= 10            #permet eliminar l'última xifra del número.
+        comptador += 1
+
+print(f"El número introduït té {comptador} xifres")
+
+
+#Exercici 9: Seqüència de Fibonacci.
+#1. Demanar a l'usuari quants termes de la seqüència de Fibonacci vol veure.
+#2. Imprimir aquest nombre de termes fent servir un bucle while.
 # La seqüència comença per 0 i 1; cada terme següent és la suma dels dos anteriors.
+termes = int(input("Quants termes de la seqüència de Fibonacci vols veure?: "))
+comptador = 0
+anterior = 0
+actual = 1
 
-# Exercici 10: Joc d'endevinar el número
-# El número secret és el 7.
-# Demana a l'usuari que provi d'endevinar-lo i continua demanant números amb un bucle while
-# fins que l'encerti.
-# Després de cada intent incorrecte, indica si el número secret és més gran o més petit.
+while comptador < termes:
+    print(anterior)
+    seguent = anterior + actual
+    anterior = actual 
+    actual = seguent
+    comptador += 1
+
+
+#Exercici 10: Joc d'endevinar el número.
+#El número secret és el 7.
+#1. Demana a l'usuari que provi d'endevinar-lo i continua demanant números amb un bucle while
+#fins que l'encerti.
+#2. Després de cada intent incorrecte, indica si el número secret és més gran o més petit.
+num_secret = 7
+num_usuari = int(input("Intenta endevinar el número secret (introdueix un enter): "))
+comptador = 0
+
+while num_usuari != num_secret:
+    if num_secret > num_usuari:
+        num_usuari = int(input("INCORRECTE, EL NÚMERO SECRET ÉS MÉS GRAN: "))
+    else:
+        num_usuari = int(input("INCORRECTE, EL NÚMERO SECRET ÉS MÉS PETIT: "))
+
+print("HAS ENCERTAT EL NÚMERO!!!!!!!")
