@@ -84,24 +84,53 @@ intensitat = 0
 
 for idx, r in enumerate(resistencies):
     intensitat = 12 / r
-    print(f"Per la {idx} resistencia la intensitat és: {intensitat:.2f}")
+    print(f"La resistència en la posició {idx} té una intensitat de: {intensitat:.2f}")
 
 
-# Exercici 8: Mostres que superen el llindar de soroll
-# Un receptor ha mesurat aquests nivells de soroll (en dBm):
-# nivells_soroll = [-92, -85, -78, -95, -81, -88]
-# Compta, amb un bucle for, quantes mostres superen el llindar de -80 dBm
-# (és a dir, tenen un valor més gran que -80) i imprimeix el resultat.
+#Exercici 8: Mostres que superen el llindar de soroll.
+#Un receptor ha mesurat aquests nivells de soroll (en dBm):
+# - nivells_soroll = [-92, -85, -78, -95, -81, -88]
+#Comptar, amb un bucle for, quantes mostres superen el llindar de -80 dBm
+#(és a dir, que tenen un valor més gran que -80) i imprimir el resultat.
+nivells_soroll = [-92, -85, -78, -95, -81, -88]
+comptador = 0
 
-# Exercici 9: Càlcul de la taxa d'error de bits
-# Compara els bits transmesos i rebuts:
-# bits_transmesos = [1, 0, 1, 1, 0, 0, 1, 0]
-# bits_rebuts =     [1, 0, 0, 1, 0, 1, 1, 0]
-# Fent servir un bucle for i els índexs de les llistes, compta quants bits
-# són diferents. Calcula i imprimeix la taxa d'error (bits diferents / total de bits).
+for mostra in nivells_soroll:
+    if mostra > -80:
+        comptador += 1
 
-# Exercici 10: Període d'un senyal
-# Donades les freqüències següents, en hertzs:
-# frequencies = [50, 100, 500, 1000]
-# Fent servir un bucle for, calcula el període de cada senyal amb la fórmula
-# T = 1 / f i imprimeix cada freqüència amb el seu període en segons.
+print(f"Hi han {comptador} mostres que superen el llindar de -80 dBm")
+
+
+#Exercici 9: Càlcul de la taxa d'error de bits.
+#Comparar els bits transmesos i rebuts:
+# - bits_transmesos = [1, 0, 1, 1, 0, 0, 1, 0]
+# - bits_rebuts =     [1, 0, 0, 1, 0, 1, 1, 0]
+#1. Fent servir un bucle for i els índexs de les llistes, comptar quants bits són diferents. 
+#2. Calcular i imprimir la taxa d'error (bits diferents / total de bits).
+bits_transmesos = [1, 0, 1, 1, 0, 0, 1, 0]
+bits_rebuts =     [1, 0, 0, 1, 0, 1, 1, 0]
+bits_diferents = 0
+index_bits_rebuts = 0
+
+for bit in bits_transmesos:
+    if bit != bits_rebuts[index_bits_rebuts]:
+        bits_diferents += 1
+    index_bits_rebuts += 1
+
+taxa_error = bits_diferents / len(bits_transmesos)
+
+print(f"Hi han {bits_diferents} bits diferents i la taxa de error és: {taxa_error}")
+
+
+#Exercici 10: Període d'un senyal.
+#Donades les freqüències següents, en hertzs:
+# - frequencies = [50, 100, 500, 1000]
+#1. Fent servir un bucle for, calcular el període de cada senyal amb la fórmula
+# T = 1 / f 
+#2. Imprimir cada freqüència amb el seu període en segons.
+frequencies = [50, 100, 500, 1000]
+
+for freq in frequencies:
+    periode = 1 / freq
+    print(f"La freqüència {freq} té un període de {periode:.3f} segons")
