@@ -1,17 +1,11 @@
-#Exercici 10: Joc d'endevinar el número.
-#El número secret és el 7.
-#1. Demana a l'usuari que provi d'endevinar-lo i continua demanant números amb un bucle while
-#fins que l'encerti.
-#2. Després de cada intent incorrecte, indica si el número secret és més gran o més petit.
-num_secret = 3
-num_usuari = int(input("Intenta endevinar el número secret (introdueix un enter): "))
-comptador = 0
+#Exercici 7: Corrent en resistències.
+#En un circuit s'aplica una tensió de 12 V a aquestes resistències:
+# - resistencies = [100, 220, 470, 1000]
+#Fent servir la llei d'Ohm (I = V / R) i un bucle for, calcular i imprimir
+#el corrent que circula per cada resistència, en ampers.
+resistencies = [100, 220, 470, 1000]
+intensitat = 0
 
-while num_usuari != num_secret:
-    if num_secret > num_usuari:
-        num_usuari = int(input("INCORRECTE, EL NÚMERO SECRET ÉS MÉS GRAN: "))
-    else:
-        num_usuari = int(input("INCORRECTE, EL NÚMERO SECRET ÉS MÉS PETIT: "))
-
-print("HAS ENCERTAT EL NÚMERO!!!!!!!")
-        
+for idx, r in enumerate(resistencies):
+    intensitat = 12 / r
+    print(f"Per la {idx} resistencia la intensitat és: {intensitat:.2f}")
