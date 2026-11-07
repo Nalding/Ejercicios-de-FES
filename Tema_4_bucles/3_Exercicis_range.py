@@ -40,4 +40,3 @@ operacio = 0
 
 for num in range(1, 11):
     print(f"{num_usuari} x {num} = {num_usuari * num}")
-
