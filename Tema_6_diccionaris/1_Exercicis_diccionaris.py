@@ -25,6 +25,7 @@ del estudiant["edat"]
 
 print(estudiant)
 
+
 #Exercici 4: Comprovar claus
 #Comprovar amb in si existeixen les claus "nom" i "email" i imprimir el resultat.
 print("nom" in estudiant)
