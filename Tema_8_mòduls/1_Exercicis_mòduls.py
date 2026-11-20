@@ -20,32 +20,70 @@ print(modul_vector)
 print(modul_limit)
 
 
-# Exercici 2 - Bàsic. Conversions reutilitzables
-# Importa conversions amb l'àlies conv i utilitza les seves funcions.
-# Converteix cada temperatura a kelvins i cada tensió a volts.
-# Entrades següents. Sortides esperades en el mateix ordre:
-# [263.15, 273.15, 298.15] i [0.0, 3.3, 5.0].
-# Amb una llista buida, el resultat corresponent ha de ser [].
+#Exercici 2 - Bàsic. Conversions reutilitzables.
+#1. Importar conversions amb l'àlies conv i utilitza les seves funcions.
+#2. Convertir cada temperatura a kelvins i cada tensió a volts.
+#Entrades següents. Sortides esperades en el mateix ordre:
+# - [263.15, 273.15, 298.15] i [0.0, 3.3, 5.0].
+# - Amb una llista buida, el resultat corresponent ha de ser [].
+#3. Obtenir i mostrar dues llistes amb les conversions.
+import conversions as conv
+
 temperatures = [-10.0, 0.0, 25.0]
 tensions_mv = [0, 3300, 5000]
-# TODO: obtén i mostra dues llistes amb les conversions.
+temperatures_k = []
+tensions_v = []
 
-# Exercici 3 - Intermedi. Resum d'una xarxa de sensors
-# Importa únicament mitjana del mòdul sensors.
-# Crea un diccionari de mitjanes amb els mateixos identificadors que dades.
-# Sortida esperada: {'T1': 21.0, 'T2': 18.0, 'T3': None}.
-# El mòdul sensors ja defineix el tractament de la llista buida.
+for temp in temperatures:
+    temperatures_k.append(conv.celsius_a_kelvin(temp))
+
+for tensio in tensions_mv:
+    tensions_v.append(conv.milivolts_a_volts(tensio))
+
+print(temperatures_k)
+print(tensions_v)
+
+
+#Exercici 3 - Intermedi. Resum d'una xarxa de sensors.
+#1. Importar únicament mitjana del mòdul sensors.
+#2. Crear un diccionari de mitjanes amb els mateixos identificadors que dades.
+# - Sortida esperada: {'T1': 21.0, 'T2': 18.0, 'T3': None}.
+# - El mòdul sensors ja defineix el tractament de la llista buida.
+# - Reutilitzar la funció importada per a cada sensor.
+from sensors import mitjana
+
 dades = {"T1": [20.0, 22.0], "T2": [18.0], "T3": []}
-# TODO: reutilitza la funció importada per a cada sensor.
+diccionari_mitjanes = {}
 
-# Exercici 4 - Repte opcional. Un programa reutilitzable
-# Defineix informe_sensor(nom, lectures) que retorni un diccionari amb
-# les claus 'nom', 'nombre' i 'mitjana'. Reutilitza sensors.mitjana.
-# Entrada: informe_sensor('T1', [20.0, 22.0]).
-# Retorn esperat: {'nom': 'T1', 'nombre': 2, 'mitjana': 21.0}.
-# Cas límit: informe_sensor('T0', []) ha de retornar
-# {'nom': 'T0', 'nombre': 0, 'mitjana': None}.
-# Afegeix una funció main() que mostri aquests dos informes.
-# Protegeix TOTES les demostracions del fitxer amb __name__ == '__main__'.
-# En importar el fitxer no s'ha de mostrar cap sortida.
-# TODO: reorganitza les demostracions dels exercicis 1–3 dins de main().
+for identificador, valor in dades.items():
+    diccionari_mitjanes[identificador] = mitjana(valor)
+
+print(diccionari_mitjanes)
+
+
+#Exercici 4 - Repte opcional. Un programa reutilitzable.
+#1. Definir informe_sensor(nom, lectures) que retorni un diccionari amb
+#les claus 'nom', 'nombre' i 'mitjana'. Reutilitzar sensors.mitjana.
+# - Entrada: informe_sensor('T1', [20.0, 22.0]).
+# - Retorn esperat: {'nom': 'T1', 'nombre': 2, 'mitjana': 21.0}.
+# - Cas límit: informe_sensor('T0', []) 
+# - Retorn esperat: {'nom': 'T0', 'nombre': 0, 'mitjana': None}.
+#2. Afegir una funció main() que mostri aquests dos informes.
+#3. Protegir TOTES les demostracions del fitxer amb __name__ == '__main__'.
+#4. En importar el fitxer no s'ha de mostrar cap sortida.
+def informe_sensor(nom, lectures):
+    from sensors import mitjana
+    diccionari = {
+        "nom" : nom,
+        "nombre" : len(lectures),
+        "mitjana" : mitjana(lectures)
+    }
+
+    return diccionari
+
+def main():
+    print(informe_sensor('T1', [20.0, 22.0]))
+    print(informe_sensor('T0', []))
+
+if __name__ == "__main__":
+    main()
